@@ -200,7 +200,7 @@ print(type(None))
 
 # None:
 # A special value returned by void functions.
-
+ 
 # module:
 # A file that contains a collection of related functions and other definitions.
 
