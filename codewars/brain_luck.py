@@ -17,7 +17,7 @@ def brain_luck(code, input):
 
 	while True:
 		instruction = code[inst_pointer_idx]
-		print("inst_pointer_idx", inst_pointer_idx)
+		# print("inst_pointer_idx", inst_pointer_idx)
 		if instruction == '>':
 			print(">")
 			data_pointer_idx += 1
@@ -54,30 +54,41 @@ def brain_luck(code, input):
 				inst_pointer_idx = inst_pointer_idx + code[inst_pointer_idx:].find(']') + 1
 			else:
 				inst_pointer_idx += 1
+			print(inst_pointer_idx)
 		elif instruction == ']':
 			print("]")
 			if data_pointer_val != 0:
-				inst_pointer_idx = code[:inst_pointer_idx].find('[') + 1
+				print(code[:inst_pointer_idx])
+				inst_pointer_idx = code[:inst_pointer_idx].rfind('[') + 1
 			else:
 				inst_pointer_idx += 1
+			print(inst_pointer_idx)
 
 		
-		print("data_pointer_idx", data_pointer_idx)
-		print("data_pointer_val", data_pointer_val)
-		print("res_array", res_array)
+		# print("data_pointer_idx", data_pointer_idx)
+		# print("data_pointer_val", data_pointer_val)
+		# print("res_array", res_array)
 
 		if inst_pointer_idx >= len(code):
 			break
 
+		print(inst_pointer_idx)
 		counter += 1
-		if counter >= 45:
+		if counter >= 345:
 			break
 
 	return "".join(res_array)
 
 
-# brain_luck(',+[-.,+]', 'Codewars' + chr(255))
-brain_luck(',>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.', chr(8) + chr(9)), chr(72)
+# print(brain_luck(',+[-.,+]', 'Codewars' + chr(255)))
+
+# print(brain_luck(',[.[-],]', 'Codewars' + chr(0)))
+
+print(brain_luck(',>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.', chr(8) + chr(9)))
+
+
+# print(brain_luck(',+[-.,+]', 'Codewars' + chr(255)))
+# brain_luck(',>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.', chr(8) + chr(9)), chr(72)
 
 # Echo until byte(255) encountered
 # assert brain_luck(',+[-.,+]', 'Codewars' + chr(255)), 'Codewars'
