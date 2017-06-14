@@ -10,16 +10,11 @@ def find_corresponding_opening_bracket_idx(s):
 			return (len(s) - 1) - idx
 
 
-# print(find_corresponding_opening_bracket_idx(',[.[-],')) # 1
-
-# print(find_corresponding_opening_bracket_idx(',[.[-')) # 3
-
-# print(find_corresponding_opening_bracket_idx(',>,<[>[->+>+<<]>>[-<<+>>')) # 17
-
-# print(find_corresponding_opening_bracket_idx(',>,<[>[->+>+<<]>>[-<<+>>]')) # 4
-
-# print(find_corresponding_opening_bracket_idx('[,>,<[>[->+>+<<]>>[-<<+>>]]')) # 0
-
+print(find_corresponding_opening_bracket_idx(',[.[-],')) # 1
+print(find_corresponding_opening_bracket_idx(',[.[-')) # 3
+print(find_corresponding_opening_bracket_idx(',>,<[>[->+>+<<]>>[-<<+>>')) # 17
+print(find_corresponding_opening_bracket_idx(',>,<[>[->+>+<<]>>[-<<+>>]')) # 4
+print(find_corresponding_opening_bracket_idx('[,>,<[>[->+>+<<]>>[-<<+>>]]')) # 0
 
 
 def find_corresponding_closing_bracket_idx(s):
@@ -33,12 +28,8 @@ def find_corresponding_closing_bracket_idx(s):
 			return idx
 
 
-# print(find_corresponding_closing_bracket_idx('-.,+]')) # 4
- 
-# print(find_corresponding_closing_bracket_idx('.[-],]')) # 5
-
-# print(find_corresponding_closing_bracket_idx('>[->+>+<<]>>[-<<+>>]]')) # 20
-
-# print(find_corresponding_closing_bracket_idx('->+>+<<]>>[-<<+>>]')) # 7
-
-# print(find_corresponding_closing_bracket_idx(',>,<[>[->+>+<<]>>[-<<+>>]]]')) # 26
+print(find_corresponding_closing_bracket_idx('-.,+]')) # 4 
+print(find_corresponding_closing_bracket_idx('.[-],]')) # 5
+print(find_corresponding_closing_bracket_idx('>[->+>+<<]>>[-<<+>>]]')) # 20
+print(find_corresponding_closing_bracket_idx('->+>+<<]>>[-<<+>>]')) # 7
+print(find_corresponding_closing_bracket_idx(',>,<[>[->+>+<<]>>[-<<+>>]]]')) # 26

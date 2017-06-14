@@ -58,19 +58,3 @@ def print_square():
 
 
 print_square()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

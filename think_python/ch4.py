@@ -1,3 +1,6 @@
+## Chapter 4  Case study: interface design
+
+
 import turtle
 import math
 
@@ -110,6 +113,3 @@ def polyline(t, n, length, angle):
 
 # postcondition:
 # A requirement that should be satisfied by the function before it ends.
-
-
-

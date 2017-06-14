@@ -227,8 +227,3 @@ print(type(None))
 
 # traceback:
 # A list of the functions that are executing, printed when an exception occurs.
-
-
-
-
-
