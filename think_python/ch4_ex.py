@@ -1,5 +1,9 @@
 """
 Exercise 1
+
+Download the code in this chapter from http://thinkpython2.com/code/polygon.py.
+- Draw a stack diagram that shows the state of the program while executing circle(bob, radius). You can do the arithmetic by hand or add print statements to the code.
+- The version of arc in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the Turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.
 """
 
 # __main__:
@@ -24,33 +28,3 @@ Exercise 1
 # 	n -> 158
 # 	length -> 3.9766995615060674
 # 	angle -> 2.278481012658228
-
-
-"""
-Exercise 2
-"""
-
-import polygon
-import turtle
-
-
-def petal(t, radius, angle):
-	polygon.arc(t, radius, angle)
-	t.lt(90)
-	polygon.arc(t, radius, angle)
-	t.lt(angle*2)
-	
-
-if __name__ == "__main__":
-	bob = turtle.Turtle()
-
-	radius = 50
-	angle = 90
-
-	# polygon.circle(bob, radius)
-	# flower(bob, radius, 4)
-
-	petal(bob, radius, angle)
-	# polygon.arc(bob, radius, 90)
-
-	turtle.mainloop()

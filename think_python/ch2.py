@@ -139,21 +139,3 @@ print(x)
 
 # semantic error:
 # An error in a program that makes it do something other than what the programmer intended.
-
-
-## 2.10  Exercises
-
-
-# Exercise 1 
-
-# 42 = n
-# SyntaxError: can't assign to literal
-
-# How about x = y = 1?
-# Legal
-
-# What if you put a period at the end of a statement?
-# Creates a tuple.
-
-# In math notation you can multiply x and y like this: x y. What happens if you try that in Python?
-# SyntaxError: invalid syntax

@@ -141,17 +141,3 @@ print('42.0')
 
 # debugging:
 # The process of finding and correcting bugs.
-
-
-## 1.9  Exercises
-
-## Exercise 1  
-
-# You can use a minus sign to make a negative number like -2. What happens if you put a plus sign before a number? What about 2++2?
-# 4
-
-# In math notation, leading zeros are ok, as in 02. What happens if you try this in Python?
-# SyntaxError: invalid token
-
-# What happens if you have two values with no operator between them?
-# SyntaxError: invalid token
