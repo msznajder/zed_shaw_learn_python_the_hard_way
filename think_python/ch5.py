@@ -12,7 +12,8 @@ minutes = 105 // 60 # 1
 
 remainder = 105 % 60 # 45
 
-# The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another.
+# The modulus operator is more useful than it seems. 
+# For example, you can check whether one number is divisible by another.
 
 if 20 % 5:
 	print("Is divisible by 5.")
@@ -34,7 +35,7 @@ type(True) # <class 'bool'>
 
 ## 5.3  Logical operators
 
-# he operands of the logical operators should be boolean expressions, but Python is not very strict. Any nonzero number is interpreted as True.
+# The operands of the logical operators should be boolean expressions, but Python is not very strict. Any nonzero number is interpreted as True.
 
 42 and True # True
 

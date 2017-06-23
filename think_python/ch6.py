@@ -85,8 +85,6 @@ def distance(x1, y1, x2, y2):
 # Use variables to hold intermediate values so you can display and check them.
 # Once the program is working, you might want to remove some of the scaffolding or consolidate multiple statements into compound expressions, but only if it does not make the program difficult to read.
 
-# [To this add TDD and development using tests.]
-
 
 ## 6.4  Boolean functions
 
