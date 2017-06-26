@@ -2,13 +2,22 @@
 Exercise 1   
 Write a program that reads words.txt and prints only the words with more than 20 characters (not counting whitespace).
 """
+WORDS_FILE_PATH = "words.txt"
 
-def print_only_long_words():
-	with open("words.txt") as fin:
+
+def load_words():
+	words = []
+	with open(WORDS_FILE_PATH) as fin:
 		for line in fin:
 			word = line.strip()
-			if len(word) > 20:
-				print(word)
+			words.append(word)
+	return words
+
+
+def print_only_long_words():
+	for word in load_words():
+		if len(word) > 20:
+			print(word)
 
 
 # print_only_long_words()
@@ -24,7 +33,6 @@ Write a function called has_no_e that returns True if the given word doesn’t h
 
 Modify your program from the previous section to print only the words that have no “e” and compute the percentage of the words in the list that have no “e”.
 """
-
 def has_no_e(s):
 	if "e" in s:
 		return False
@@ -33,22 +41,18 @@ def has_no_e(s):
 
 
 def print_only_no_e_words():
-	with open("words.txt") as fin:
-		for line in fin:
-			word = line.strip()
-			if has_no_e(word):
-				print(word)
+	for word in load_words():
+		if has_no_e(word):
+			print(word)
 
 
 def compute_e_no_e_words_percentage():
 	no_e_words = []
 	all_words = []
-	with open("words.txt") as fin:
-		for line in fin:
-			word = line.strip()
-			if has_no_e(word):
-				no_e_words.append(word)
-			all_words.append(word)
+	for word in load_words():
+		if has_no_e(word):
+			no_e_words.append(word)
+		all_words.append(word)
 	return (len(no_e_words) / len(all_words)) * 100
 
 
@@ -73,11 +77,9 @@ def avoid(word, forbidden):
 
 def print_user_avoid_letters_words():
 	forbidden = input()
-	with open("words.txt") as fin:
-		for line in fin:
-			word = line.strip()
-			if avoid(word, forbidden):
-				print(word)
+	for word in load_words():
+		if avoid(word, forbidden):
+			print(word)
 
 # print(avoid("anagram", "bcd"))
 # print_user_avoid_letters_words()
@@ -96,11 +98,9 @@ def uses_only(word, used):
 
 def print_user_use_letters_words():
 	used = input()
-	with open("words.txt") as fin:
-		for line in fin:
-			word = line.strip()
-			if uses_only(word, used):
-				print(word)
+	for word in load_words():
+		if uses_only(word, used):
+			print(word)
 
 
 # print(uses_only("abba", "b"))
@@ -121,11 +121,9 @@ def uses_all(word, used):
 
 def print_user_use_all_letters_words():
 	used = input()
-	with open("words.txt") as fin:
-		for line in fin:
-			word = line.strip()
-			if uses_all(word, used):
-				print(word)
+	for word in load_words():
+		if uses_all(word, used):
+			print(word)
 
 
 # print(uses_all("abba", "ab"))
@@ -144,28 +142,10 @@ def is_abecedarian(word):
 
 
 def print_abecedarian_words():
-	with open("words.txt") as fin:
-		for line in fin:
-			word = line.strip()
-			if is_abecedarian(word):
-				print(word)
+	for word in load_words():
+		if is_abecedarian(word):
+			print(word)
 
-print(is_abecedarian("deeeefa"))
+
+# print(is_abecedarian("deeeefa"))
 print_abecedarian_words()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
