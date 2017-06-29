@@ -178,11 +178,13 @@ def check_for_tripple_double_letters(word):
 			counter = 0
 	return counter == 2
 
+
 def print_tripple_double_words():
 	words = load_words()
 	for word in words:
 		if check_for_tripple_double_letters(word):
 			print(word)
+
 
 # print(check_for_tripple_double_letters("peppa"))
 # print_tripple_double_words()

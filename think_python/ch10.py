@@ -159,7 +159,7 @@ print(only_upper(t))
 # If you know the index of the element you want, you can use pop.
 
 t = ['a', 'b', 'c']
-x = t.popo(1)
+x = t.pop(1)
 t # ['a', 'c']
 x # 'b'
 
@@ -277,7 +277,7 @@ a # [42, 2, 3]
 
 # In general, it is safer to avoid aliasing when you are working with mutable objects.
 
-For immutable objects like strings, aliasing is not as much of a problem.
+# For immutable objects like strings, aliasing is not as much of a problem.
 
 a = "banana"
 b = "banana"
@@ -350,9 +350,11 @@ rest # ['b', 'c']
 ## 10.13  Debugging
 
 # Most list methods modify the argument and return None. This is the opposite of the string methods, which return a new string and leave the original alone.
+word = "word\n"
 
 word = word.strip()
 
+t = [2, 1, 3]
 t = t.sort() # WRONG
 
 # Because sort returns None, the next operation you perform with t is likely to fail.
@@ -365,6 +367,8 @@ t = t.sort() # WRONG
 # For example, to remove an element from a list, you can use pop, remove, del, or even a slice assignment.
 
 # To add an element, you can use the append method or the + operator. Assuming that t is a list and x is a list element, these are correct
+
+t = [1, 2, 3]
 
 t.append(1)
 t = t + [1]
@@ -388,7 +392,7 @@ t2.sort()
 t # [3, 1, 2]
 t2 # [1, 2, 3]
 
-In this example you could also use the built-in function sorted, which returns a new, sorted list and leaves the original alone.
+# In this example you could also use the built-in function sorted, which returns a new, sorted list and leaves the original alone.
 
 t2 = sorted(t)
 t # [3, 2, 1]

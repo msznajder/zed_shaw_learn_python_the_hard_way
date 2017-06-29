@@ -4,8 +4,7 @@
 # 4
 
 # In math notation, leading zeros are ok, as in 02. What happens if you try this in Python?
-# SyntaxError: invalid token
-
+  
 # What happens if you have two values with no operator between them?
 # SyntaxError: invalid token
 
