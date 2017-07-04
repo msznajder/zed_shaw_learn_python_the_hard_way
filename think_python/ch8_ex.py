@@ -7,40 +7,40 @@ The documentation uses a syntax that might be confusing. For example, in find(su
 s = "Abc\n"
 
 # Return a copy of the string with its first character capitalized and the rest lowercased.
-print(s.capitalize())
+# print(s.capitalize())
 
 # Return a casefolded copy of the string. Casefolded strings may be used for caseless matching.
-print(s.casefold())
+# print(s.casefold())
 
 # Return centered in a string of length width. Padding is done using the specified fillchar (default is an ASCII space). 
-print(s.center(100))
+# print(s.center(100))
 
 # Return an encoded version of the string as a bytes object.
-print(s.encode(encoding="utf-8", errors="strict"))
+# print(s.encode(encoding="utf-8", errors="strict"))
 
 # Return a copy of the string where all tab characters are replaced by one or more spaces, depending on the current column and the given tab size. 
-print("\tabc".expandtabs(tabsize=8))
+# print("\tabc".expandtabs(tabsize=8))
 
 # Perform a string formatting operation.
-print("{} and {}".format(1, 2))
+# print("{} and {}".format(1, 2))
 
 # Return true if all characters in the string are decimal characters and there is at least one character, false otherwise. 
-print("0001".isdecimal())
+# print("0001".isdecimal())
 
 # Return true if all characters in the string are digits and there is at least one character, false otherwise. 
-print(s.isdigit())
+# print(s.isdigit())
 
 # Return true if all characters in the string are numeric characters, and there is at least one character, false otherwise.
-print(s.isnumeric())
+# print(s.isnumeric())
 
 # Return true if the string is a titlecased string and there is at least one character, for example uppercase characters may only follow uncased characters and lowercase characters only cased ones.
-print(s.istitle())
+# print(s.istitle())
 
 # Split the string at the first occurrence of sep, and return a 3-tuple containing the part before the separator, the separator itself, and the part after the separator.
-print("203.022".partition("."))
+# print("203.022".partition("."))
 
 # Split the string at the last occurrence of sep, and return a 3-tuple containing the part before the separator, the separator itself, and the part after the separator. 
-print("203.022.000".rpartition("."))
+# print("203.022.000".rpartition("."))
 
 # Whole list:
 # https://docs.python.org/3/library/stdtypes.html#string-methods
@@ -50,7 +50,7 @@ print("203.022.000".rpartition("."))
 Exercise 2  
 There is a string method called count that is similar to the function in Section 8.7. Read the documentation of this method and write an invocation that counts the number of a’s in 'banana'.
 """
-print("banana".count("a"))
+# print("banana".count("a"))
 
 
 """
@@ -65,7 +65,7 @@ Use this idiom to write a one-line version of is_palindrome from Exercise 3.
 def is_palindrome(s):
 	return s == s[::-1]
 
-print(is_palindrome("abba"))
+# print(is_palindrome("abba"))
 
 """
 Exercise 4  
@@ -106,8 +106,8 @@ def any_lowercase5(s):
     return False
 
 
-print(any_lowercase5("tesT"))
-print(any_lowercase5("TEST"))
+# print(any_lowercase5("tesT"))
+# print(any_lowercase5("TEST"))
 
 
 """
@@ -138,4 +138,4 @@ def rotate_word(s, shift):
 	return res
 
 
-print(rotate_word("hal", 1))
+# print(rotate_word("hal", 1))

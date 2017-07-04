@@ -1,33 +1,8 @@
-def count_down(n):
+def fact(n):
 	if n == 0:
-		print("Blastoff!")
+		return 0
 	else:
-		print(n)
-		count_down(n-1)
-
-
-count_down(10)
-
-
-def print_n(n):
-	while n > 0:
-		print(n)
-		n -= 1
-
-
-print_n(10)
-
-
-def print_n2(n):
-	if n == 0:
-		print(n)
-	else:
-		print(n)
-		print_n2(n-1)
-
-
-print_n2(10)
-
+		return n * fac(n-1)
 
 def fib(n):
 	if n == 0:
@@ -38,10 +13,15 @@ def fib(n):
 		return fib(n-1) + fib(n-2)
 
 
-def fac(n):
+def print_n(n):
 	if n == 0:
-		return 1
+		print(n)
 	else:
-		return n*fac(n-1)
+		print(n)
+		print_n(n-1)
 
-print(fac(3))
+def print_n2(n):
+	for i in range(n):
+		print(i)
+
+print_n(3)

@@ -179,8 +179,49 @@ Write a function called in_bisect that takes a sorted list and a target value an
 
 Or you could read the documentation of the bisect module and use that! Solution: http://thinkpython2.com/code/inlist.py.
 """
-def in_bisect(l, value)
-	pass
+import time
+import ch11_ex
+
+def bisection_search(l, target):
+	low = 0
+	high = len(l) - 1
+	while True:
+		if low > high:
+			return -1
+		m = int((low + high) / 2)
+		if target > l[m]:
+			low = m + 1
+		elif target < l[m]:
+			high = m - 1
+		if l[m] == target:
+			return m
+
+
+def in_bisect(l, value):
+	return bisection_search(l, value) != -1
+
+
+def time_checking_membership_methods():
+	words = load_words()
+
+	start_time = time.time()
+	"bawdinesses" in words
+	print("in_regular", time.time() - start_time)
+	print("bawdinesses" in words)
+
+	start_time = time.time()
+	in_bisect(words, "bawdinesses")
+	print("in_bisect", time.time() - start_time)
+	print(in_bisect(words, "bawdinesses"))
+
+	words_dict = ch11_ex.dict_from_list(words)
+	start_time = time.time()
+	"bawdinesses" in words_dict
+	print("in_dict", time.time() - start_time)
+	print("bawdinesses" in words_dict)
+	
+
+# time_checking_membership_methods()
 
 """
 Exercise 11  
@@ -205,15 +246,39 @@ def find_all_reverse_pairs_list_membership():
 			reverse_pairs.append((word, word[::-1]))
 	return reverse_pairs
 
+
 ## check for list membership with bisect_in
+def find_all_reverse_pairs_bisect_membership():
+	reverse_pairs = []
+	words = load_words()
+	for word in words:
+		if in_bisect(words, word[::-1]) and word != word[::-1]:
+			reverse_pairs.append((word, word[::-1]))
+	return reverse_pairs
 
 ## check for dict membership
-
+def find_all_reverse_pairs_dict_membership():
+	reverse_pairs = []
+	words = load_words()
+	words_dict = ch11_ex.dict_from_list(words)
+	for word in words:
+		if word[::-1] in words_dict and word != word[::-1]:
+			reverse_pairs.append((word, word[::-1]))
+	return reverse_pairs
 
 # print(find_all_reverse_pairs_enumerate_all_pairs())
 
+# start_time = time.time()
 # print(find_all_reverse_pairs_list_membership())
+# print("find_all_reverse_pairs_list_membership time", time.time() - start_time)
 
+# start_time = time.time()
+# print(find_all_reverse_pairs_bisect_membership())
+# print("find_all_reverse_pairs_bisect_membership time", time.time() - start_time)
+
+# start_time = time.time()
+# print(find_all_reverse_pairs_dict_membership())
+# print("find_all_reverse_pairs_dict_membership time", time.time() - start_time)
 
 
 """
@@ -222,6 +287,10 @@ Two words “interlock” if taking alternating letters from each forms a new wo
 Write a program that finds all pairs of words that interlock. Hint: don’t enumerate all pairs!
 Can you find any words that are three-way interlocked; that is, every third letter forms a word, starting from the first, second or third?
 """
+def un_interlock(s):
+	return s[0::2], s[1::2]
+
+
 ## check for list membership with in
 def find_interlock_words_list_membership():
 	words = load_words()
@@ -232,12 +301,37 @@ def find_interlock_words_list_membership():
 			interlocking_pairs.append((un_interlocked_word1, un_interlocked_word2, word))
 	return interlocking_pairs
 
+
 ## check for list membership with bisect_in
+def find_interlock_words_bisect_membership():
+	words = load_words()
+	interlocking_pairs = []
+	for word in words:
+		un_interlocked_word1, un_interlocked_word2 = un_interlock(word)
+		if in_bisect(words, un_interlocked_word1) and in_bisect(words, un_interlocked_word2):
+			interlocking_pairs.append((un_interlocked_word1, un_interlocked_word2, word))
+	return interlocking_pairs
 
 ## check for dict membership
+def find_interlock_words_dict_membership():
+	words = load_words()
+	words_dict = ch11_ex.dict_from_list(words)
+	interlocking_pairs = []
+	for word in words:
+		un_interlocked_word1, un_interlocked_word2 = un_interlock(word)
+		if un_interlocked_word1 in words_dict and un_interlocked_word2 in words_dict:
+			interlocking_pairs.append((un_interlocked_word1, un_interlocked_word2, word))
+	return interlocking_pairs
 
-def un_interlock(s):
-	return s[0::2], s[1::2]
 
-
+# start_time = time.time()
 # print(find_interlock_words_list_membership())
+# print("find_interlock_words_list_membership time", time.time() - start_time)
+
+# start_time = time.time()
+# print(find_interlock_words_bisect_membership())
+# print("find_interlock_words_bisect_membership time", time.time() - start_time)
+
+# start_time = time.time()
+# print(find_interlock_words_dict_membership())
+# print("find_interlock_words_dict_membership time", time.time() - start_time)
