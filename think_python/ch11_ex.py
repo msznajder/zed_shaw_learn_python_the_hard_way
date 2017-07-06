@@ -103,23 +103,47 @@ def get_all_rotate_pairs():
 
 # print(ch8_ex.rotate_word("abcd", 26))
 # print(generate_all_rotations("abcd"))
-print(get_all_rotate_pairs())
+# print(get_all_rotate_pairs())
 
 
+"""
+Exercise 6  
+Here’s another Puzzler from Car Talk (http://www.cartalk.com/content/puzzlers):
+This was sent in by a fellow named Dan O’Leary. He came upon a common one-syllable, five-letter word recently that has the following unique property. When you remove the first letter, the remaining letters form a homophone of the original word, that is a word that sounds exactly the same. Replace the first letter, that is, put it back and remove the second letter and the result is yet another homophone of the original word. And the question is, what’s the word?
+Now I’m going to give you an example that doesn’t work. Let’s look at the five-letter word, ‘wrack.’ W-R-A-C-K, you know like to ‘wrack with pain.’ If I remove the first letter, I am left with a four-letter word, ’R-A-C-K.’ As in, ‘Holy cow, did you see the rack on that buck! It must have been a nine-pointer!’ It’s a perfect homophone. If you put the ‘w’ back, and remove the ‘r,’ instead, you’re left with the word, ‘wack,’ which is a real word, it’s just not a homophone of the other two words.
+But there is, however, at least one word that Dan and we know of, which will yield two homophones if you remove either of the first two letters to make two, new four-letter words. The question is, what’s the word?
+
+You can use the dictionary from Exercise 1 to check whether a string is in the word list.
+
+To check whether two words are homophones, you can use the CMU Pronouncing Dictionary. You can download it from http://www.speech.cs.cmu.edu/cgi-bin/cmudict or from http://thinkpython2.com/code/c06d and you can also download http://thinkpython2.com/code/pronounce.py, which provides a function named read_dictionary that reads the pronouncing dictionary and returns a Python dictionary that maps from each word to a string that describes its primary pronunciation.
+
+Write a program that lists all the words that solve the Puzzler. Solution: http://thinkpython2.com/code/homophone.py.
+"""
+def generate_pronounciation_dict():
+	pronounciation_dict = dict()
+	with open("c06d.txt") as fin:
+		for line in fin:
+			if not line.startswith("##"):
+				split_line = line.strip().lower().split()
+				word = split_line[0]
+				pron = " ".join(split_line[1:])
+				pronounciation_dict[word] = pron
+	return pronounciation_dict
 
 
+def look_for_word_homophones():
+	words = ch10_ex.load_words()
+	words_dict = dict_from_list(words)
+	words_pronounciation_dict = generate_pronounciation_dict()
+	for word in words:
+		word_no_first_letter = word[1:]
+		word_no_second_letter = word[0] + word[2:]
+		if word_no_first_letter not in words_dict or word_no_second_letter not in words_dict:	
+			continue
+		if word not in words_pronounciation_dict or word_no_first_letter not in words_pronounciation_dict or word_no_second_letter not in words_pronounciation_dict:	
+			continue
+		if words_pronounciation_dict[word] == words_pronounciation_dict[word_no_first_letter] == words_pronounciation_dict[word_no_second_letter]:
+			print(word, word_no_first_letter, word_no_second_letter)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# print(generate_pronounciation_dict())
+# look_for_word_homophones()

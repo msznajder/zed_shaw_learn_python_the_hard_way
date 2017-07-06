@@ -266,6 +266,7 @@ def find_all_reverse_pairs_dict_membership():
 			reverse_pairs.append((word, word[::-1]))
 	return reverse_pairs
 
+
 # print(find_all_reverse_pairs_enumerate_all_pairs())
 
 # start_time = time.time()
