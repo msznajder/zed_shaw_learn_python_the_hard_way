@@ -44,8 +44,8 @@ def find_anagram_lists():
 		anagrams_sets[key].append(word)
 	return sorted([val for key, val in anagrams_sets.items() if len(val) > 1], key=lambda val: len(val), reverse=True) # !!
 
-# for val in find_anagram_lists():
-# 	print(val)
+for val in find_anagram_lists():
+	print(val)
 
 """
 Exercise 3  
@@ -81,21 +81,114 @@ def generate_all_characters_swaps(s):
 # print(generate_all_characters_swaps("0123"))
 # print(find_metathesis_pairs())
 
-## TODO: Use find_anagram_lists() to search for all and time both solutions.
+
+"""
+Exercise 4  
+Here’s another Car Talk Puzzler (http://www.cartalk.com/content/puzzlers):
+What is the longest English word, that remains a valid English word, as you remove its letters one at a time?
+Now, letters can be removed from either end, or the middle, but you can’t rearrange any of the letters. Every time you drop a letter, you wind up with another English word. If you do that, you’re eventually going to wind up with one letter and that too is going to be an English word—one that’s found in the dictionary. I want to know what’s the longest word and how many letters does it have?
+I’m going to give you a little modest example: Sprite. Ok? You start off with sprite, you take a letter off, one from the interior of the word, take the r away, and we’re left with the word spite, then we take the e off the end, we’re left with spit, we take the s off, we’re left with pit, it, and I.
+
+Write a program to find all words that can be reduced in this way, and then find the longest one.
+"""
+
+## Version 1.0
+
+import itertools
+
+def get_removed_letters_words2():
+	words = ch10_ex.load_words()
+	words_dict = ch11_ex.dict_from_list(words)
+	removed_letters_words = []
+	# words = ["abcd", "sprite"]
+	for word in words:
+		# print(word)
+		for n in range(1, len(word)):
+			# print(n)
+			removal_idices_combinations = get_n_chars_removal_combinations_idices(word, n)
+			any_combination_is_word = False
+			for removal_idices_combination in removal_idices_combinations:
+				# print(removal_idices_combination)
+				removed_letters_word = get_word_after_index_char_removal(word, removal_idices_combination)
+				# print(removed_letters_word)
+				if removed_letters_word in words_dict:
+					# print("in!!!")
+					any_combination_is_word = True
+			# print("!!!", any_combination_is_word)
+			if not any_combination_is_word:
+				break
+		# print("end", any_combination_is_word)
+		if any_combination_is_word:
+			removed_letters_words.append(word)
+	return sorted(removed_letters_words, key=lambda val: len(val), reverse=True)
+
+
+def get_n_chars_removal_combinations_idices(s, n):
+	indices = range(0, len(s))
+	indices_removal_combinations = itertools.combinations(indices, n)
+	return indices_removal_combinations
+
+
+def get_word_after_index_char_removal(s, removal_idices):
+	return "".join([ch for idx, ch in enumerate(s) if idx not in removal_idices])
+
+# print(get_removed_letters_words2())
 
 
 
+## Version 2.0
+
+import itertools
+
+def get_word_stripping_patterns_tree(word):
+	val_ranges = []
+	for n in range(len(word) - 1):
+		val_ranges.append(list(range(0, len(word) - n)))	
+	return list(itertools.product(*val_ranges))
+
+def get_word_for_stripping_pattern(word, stripping_pattern):
+	word_list = list(word)
+	for idx in stripping_pattern:
+		del word_list[idx]
+	return "".join(word_list)
+
+def check_words_for_stripping_sequence(word, stripping_sequence, words_dict):
+	stripped_words = []
+	all_stripped_are_words = True
+	for idx in range(len(stripping_sequence)):
+		stripped_word = get_word_for_stripping_pattern(word, stripping_sequence[:idx+1])
+		if stripped_word not in words_dict:
+			all_stripped_are_words = False
+		stripped_words.append(stripped_word)
+	return all_stripped_are_words, stripped_words
+
+def get_all_correct_word_strippings(word, words_dict):
+	correct_word_strippings = []
+	stripping_patterns = get_word_stripping_patterns_tree(word)
+	for stripping_pattern in stripping_patterns:
+		correct, sequence = check_words_for_stripping_sequence(word, stripping_pattern, words_dict)
+		if correct:
+			correct_word_strippings.append([word] + sequence)
+	return correct_word_strippings
+
+def get_all_words_correct_word_strippings():
+	words = ch10_ex.load_words()
+	words_dict = ch11_ex.dict_from_list(words)
+	all_words_stripping_patterns = []
+	for word in words:
+		print(word)
+		all_correct_word_strippings = get_all_correct_word_strippings(word, words_dict)
+		if len(all_correct_word_strippings) > 0:
+			all_words_stripping_patterns.extend(all_correct_word_strippings)
+	return all_words_stripping_patterns
 
 
+print(get_all_words_correct_word_strippings())
 
+# w = "word"
+# [w] 
+# ['word']
 
-
-
-
-
-
-
-
-
-
+# list(w)
+# ['w', 'o', 'r', 'd']
 	
